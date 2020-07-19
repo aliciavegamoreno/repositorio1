@@ -10,7 +10,13 @@ public class GameService {
 
 	@Autowired
 	WinnerResolutorService winnerResolutor;
-	
+
+	Statistics stats = new Statistics();
+
+	public Statistics getStatistics() {
+		return stats;
+	}
+
 	public Round play() {
 
 		Round round = new Round();
@@ -19,13 +25,25 @@ public class GameService {
 		round.setPlayerTwo(Constantes.ROCK);
 
 		String resolution = winnerResolutor.checkWinner(round.getPlayerOne(), round.getPlayerTwo());
-		
+
 		round.setResultOfGame(resolution);
 
-		//updateStats();
-		
+		updateStats(resolution);
+
 		return round;
 	}
-	
-	
+
+	private void updateStats(String resolution) {
+		if (Constantes.DRAW.equalsIgnoreCase(resolution)) {
+			stats.setDrawsTotal(stats.getDrawsTotal() + 1);
+		} else if (Constantes.PLAYER_ONE_WINS.equalsIgnoreCase(resolution)) {
+			stats.setPlayerOneTotal(stats.getPlayerOneTotal() + 1);
+		} else {
+			stats.setPlayerTwoTotal(stats.getPlayerTwoTotal() + 1);
+		}
+		
+		stats.setRoundNumber(stats.getRoundNumber() + 1);
+
+	}
+
 }

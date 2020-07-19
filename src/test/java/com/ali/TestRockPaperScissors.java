@@ -9,14 +9,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.alicia.Constantes;
+import com.alicia.GameService;
 import com.alicia.ProyectoRestApplication;
 import com.alicia.WinnerResolutorService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ProyectoRestApplication.class)
-public class TestRound {
+public class TestRockPaperScissors {
 
-
+	@Autowired
+	GameService gameService;
+	
 	@Autowired
 	WinnerResolutorService winnerResolutor;
 	
@@ -60,6 +63,19 @@ public class TestRound {
 		String resolution3 = winnerResolutor.checkWinner(Constantes.SCISSORS, Constantes.ROCK);
 		assertEquals(Constantes.PLAYER_TWO_WINS, resolution3);
 		
+	}
+	
+	@Test
+	public void TestStats() {
+		assertEquals(gameService.getStatistics().getDrawsTotal(),0);
+		assertEquals(gameService.getStatistics().getRoundNumber(),0);
+		assertEquals(gameService.getStatistics().getPlayerOneTotal(),0);
+		assertEquals(gameService.getStatistics().getPlayerTwoTotal(),0);
+	
+		gameService.play();
+		gameService.play();
+		
+		assertEquals(gameService.getStatistics().getRoundNumber(), (gameService.getStatistics().getPlayerOneTotal()+gameService.getStatistics().getPlayerTwoTotal()+gameService.getStatistics().getDrawsTotal()));
 	}
 
 }

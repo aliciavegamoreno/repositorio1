@@ -13,7 +13,7 @@
 	<artifactId>rockscissorpaper</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>rockscissorpaper</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Ciklum project Rock Paper Scissors</description>
 
 	<properties>
 		<java.version>1.8</java.version>

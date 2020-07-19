@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<htmlxmlns:"http://www.thymeleaf.org">
+	<head>
+
+<link rel='stylesheet'
+	href='/webjars/bootstrap/4.5.0/css/bootstrap.min.css'>
+<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	</head>
+	<meta charset="UTF-8">
+	<title>Rock, Paper, Scissors</title>
+	</head>
+	<body>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<td>Total Rounds played</td>
+					<td>Total Player One wins</td>
+					<td>Total Player Two wins</td>
+					<td>Total Draws</td>
+				</tr>
+			</thead>
+			<tr>
+				<td th:text="${stats.roundNumber}"></td>
+				<td th:text="${stats.playerOneTotal}"></td>
+				<td th:text="${stats.playerTwoTotal}"></td>
+				<td th:text="${stats.drawsTotal}"></td>
+
+			</tr>
+		</table>
+		<form action="view">
+			<input type="submit" value="Back" class="btn btn-primary" />
+		</form>
+
+	</body>
+	</html>

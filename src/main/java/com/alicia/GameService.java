@@ -19,21 +19,15 @@ public class GameService {
 
 	public Round play() {
 
-		Round round = new Round();
-		int index = ThreadLocalRandom.current().nextInt(0, Constantes.item.length);
-		round.setPlayerOne(Constantes.item[index]);
-		round.setPlayerTwo(Constantes.ROCK);
-
-		String resolution = winnerResolutor.checkWinner(round.getPlayerOne(), round.getPlayerTwo());
-
-		round.setResultOfGame(resolution);
-
-		updateStats(resolution);
+		Round round = setPlay();
+		
+		updateStats(round.getResultOfGame());
 
 		return round;
 	}
 
 	private void updateStats(String resolution) {
+		
 		if (Constantes.DRAW.equalsIgnoreCase(resolution)) {
 			stats.setDrawsTotal(stats.getDrawsTotal() + 1);
 		} else if (Constantes.PLAYER_ONE_WINS.equalsIgnoreCase(resolution)) {
@@ -46,4 +40,17 @@ public class GameService {
 
 	}
 
+	private Round setPlay() {
+		
+		Round round = new Round();
+		int index = ThreadLocalRandom.current().nextInt(0, Constantes.item.length);
+		round.setPlayerOne(Constantes.item[index]);
+		round.setPlayerTwo(Constantes.ROCK);
+
+		String resolution = winnerResolutor.checkWinner(round.getPlayerOne(), round.getPlayerTwo());
+
+		round.setResultOfGame(resolution);
+		
+		return round;
+	}
 }

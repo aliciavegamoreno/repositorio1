@@ -1,9 +1,5 @@
 package com.alicia;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
-
 public class Round {
 
 	private String playerOne;
@@ -54,6 +50,5 @@ public class Round {
 	public void setRoundNumber(int roundNumber) {
 		this.roundNumber = roundNumber;
 	}
-
 
 }

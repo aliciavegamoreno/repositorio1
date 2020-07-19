@@ -10,11 +10,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.alicia.Constantes;
 import com.alicia.GameService;
-import com.alicia.ProyectoRestApplication;
+import com.alicia.RockPaperScissorsApp;
 import com.alicia.WinnerResolutorService;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ProyectoRestApplication.class)
+@SpringBootTest(classes = RockPaperScissorsApp.class)
 public class TestRockPaperScissors {
 
 	@Autowired
